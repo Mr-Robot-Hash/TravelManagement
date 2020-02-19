@@ -1,7 +1,12 @@
 package com.project.dto;
 
+import javax.persistence.*;
+
+@Table(name="Passenger")
+@Entity
 public class Passenger {
 	
+	@Id
 	int id;
 	String name;
 	String gender;

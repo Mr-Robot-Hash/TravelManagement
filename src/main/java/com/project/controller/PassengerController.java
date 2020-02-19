@@ -27,5 +27,11 @@ public class PassengerController {
 		return passengerService.getAllPassenger();
 
 	}
+	
+	@GetMapping(path="/doSavePass")
+		public void doSavePass()
+		{
+		passengerService.doSavePass();
+		}
 
 }
