@@ -3,21 +3,25 @@ package com.project.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.dao.PassengerDAO;
 import com.project.dto.Passenger;
 
 @Service
 public class PassengerService {
 
 	
+	 public PassengerDAO getPassengerDAO() {
+		return passengerDAO;
+	}
+	public void setPassengerDAO(PassengerDAO passengerDAO) {
+		this.passengerDAO = passengerDAO;
+	}
 	@Autowired
-	EntityManager em;
+	private PassengerDAO passengerDAO;
+	
 	public List<Passenger> getAllPassenger() 
 	{
 		List<Passenger> allPassenger=new ArrayList<Passenger>();
@@ -41,13 +45,21 @@ public class PassengerService {
 	public void doSavePass()
 	{
 		Passenger p1=new Passenger();
-		p1.setId(1);
-		p1.setName("Kiran");
+		p1.setId(2);
+		p1.setName("medha");
 		p1.setGender("Female");
 		
-		em.getTransaction().begin();
-		em.persist(p1);
-		em.getTransaction().commit();
+		passengerDAO.doSavePassenger(p1);
+		
+		
+	}
+	
+	public List<Passenger> fetchAllPassenger()
+	{
+		List<Passenger> allPassenger=new ArrayList<Passenger>();
+		
+		 allPassenger=passengerDAO.fetchAllPassenger();
+		return allPassenger;
 	}
 
 }

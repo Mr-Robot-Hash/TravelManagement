@@ -33,5 +33,12 @@ public class PassengerController {
 		{
 		passengerService.doSavePass();
 		}
+	
+	@GetMapping(path="/doFetchAll")
+	public List<Passenger> doFetchAll()
+	{
+		System.out.println(passengerService.fetchAllPassenger());
+		return passengerService.fetchAllPassenger();
+	}
 
 }
